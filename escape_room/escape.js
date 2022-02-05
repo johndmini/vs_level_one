@@ -3,8 +3,10 @@ alert('SANTA: Welcome to the escape room....')
 function cancelGame (result) {
     if (result === false || result === null) {
         alert('You Died')
+        throw new Error('Player Died');
     }
 }
+
 
 let playerName = prompt('SANTA: What should I call you?', []);
 cancelGame (playerName);

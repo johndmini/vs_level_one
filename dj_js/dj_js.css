@@ -1,0 +1,27 @@
+body {
+    background-color: grey;
+}
+
+.title {
+    text-align: center;
+    background-color: rgb(67, 67, 116);
+    color: white;
+    border: 5px solid black;
+}
+
+#thegridbox {
+    display: inline-grid;
+    grid-template-columns: repeat(10, 100px);
+    grid-template-rows: repeat(10, 100px);
+    text-align: center;
+    border: 5px solid white;
+}
+
+#identifier {
+    grid-column: 1 / 11;
+    grid-row: 1 / 11;
+    font-size: 50px;
+    background-color: black;
+    color: white;
+    cursor:pointer;
+}

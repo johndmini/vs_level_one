@@ -101,4 +101,5 @@ mainForm.addEventListener('submit', function(event) {
     newDivOne.style.backgroundColor = 'Burlywood'
     newDivOne.textContent = newInput
     mainMessage.append(newDivOne)
+    console.log(newInput)
 })

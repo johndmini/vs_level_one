@@ -115,9 +115,7 @@ let lettersForLater = [];
 
 for(let i = 0; i < numbersForNow.length; i++){
   for(let j = 0; j < numbersForNow[i].length; j++){
-    if(numbersForNow[i][j] === numbersForNow[i][j]){
-      numbersForNow[i][j] = lettersForLater.push('X')
-    }
+    numbersForNow[i][j] = lettersForLater.push('X')
   }
 }
 

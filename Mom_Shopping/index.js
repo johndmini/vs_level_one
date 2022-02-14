@@ -1,6 +1,6 @@
 //--- Set variable assignments for DOM
-let addButton = document.querySelector("#addbutton")
-let deleteButton = document.querySelectorAll("#deleteitem")
+const addButton = document.querySelector("#addbutton")
+const deleteButton = document.querySelectorAll("#deleteitem")
 const editButtons = document.querySelectorAll('#edititem')
 let newInput = document.querySelector("#title")
 let listedItem = document.querySelectorAll("#newgrocery")

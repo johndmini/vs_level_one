@@ -2,12 +2,12 @@ let employee = [];
 
 function Employee(name, jobTitle, salary) {
     this.name = name;
-    this.jobTitle = jobTitle;
+    this.jobtitle = jobTitle;
     this.salary = salary;
     this.status = 'Full Time';
 }
 Employee.prototype.printEmployeeForm = function(){
-    console.log(this.name + ' is a ' + this.jobTitle + ' and their salary is $' + this.salary + ' and is currently working ' + this.status);
+    console.log(this.name + ' is a ' + this.jobtitle + ' and their salary is $' + this.salary + ' and is currently working ' + this.status);
 }
 
 let employeeOne = new Employee('John', 'Front End Developer', 90000);

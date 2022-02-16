@@ -51,12 +51,12 @@ const enemyList = [
         Loot: ['Health Potion', 'Health Potion', 'Health Potion', 'Super Potion']
     }
 ];
-let randomEnemyIndex = Math.floor(Math.random() * enemyList.length)
-let randomEnemyMoveKeys = Object.keys(enemyList[randomEnemyIndex].EnemyMoves)
-let randomEnemyMoves = enemyList[randomEnemyIndex].EnemyMoves
-let randomEnemyLoot = enemyList[randomEnemyIndex].Loot
-let chosenEnemy = enemyList[randomEnemyIndex].EnemyName
-let enemyHealth = enemyList[randomEnemyIndex].EnemyHealth
+// let randomEnemyIndex = Math.floor(Math.random() * enemyList.length)
+// let randomEnemyMoveKeys = Object.keys(enemyList[randomEnemyIndex].EnemyMoves)
+// let randomEnemyMoves = enemyList[randomEnemyIndex].EnemyMoves
+// let randomEnemyLoot = enemyList[randomEnemyIndex].Loot
+// let chosenEnemy = enemyList[randomEnemyIndex].EnemyName
+// let enemyHealth = enemyList[randomEnemyIndex].EnemyHealth
 
 //---Player Stats---
 const playerMoves = {
@@ -67,18 +67,37 @@ const playerMoves = {
     'Water Style Blast': Math.floor(Math.random() * 8) +4,
     'Ice Style Blast': Math.floor(Math.random() * 12) + 5,
 };
-let playerHealth = 100;
-let playerInventory = [];
+let playerInventory = []
+let playerStats = {
+    PlayerName: userName,
+    PlayerHealth: 100,
+    Inventory: []
+}
+
+function NewPlayerHP(playerHP) {
+    this.PlayerHealth = playerHP
+}
+
+let playerInfo = {}
 const playerMoveKeys = Object.keys(playerMoves);
 
-//---Loot Pick Up Functionality---
-function pickUpLoot(){
-    
+
+// let newPlayerHP = letsFight()
+function getPlayerHP(){
+    let playerHealth = playerStats.PlayerHealth
+    if(playerHealth !== playerStats.PlayerHealth){
+        return playerInfo.PlayerHealth
+    } else {
+        return playerHealth;
+    }
 }
+// let currentPlayerHP = getPlayerHP()
+
+//---Loot Pick Up Functionality---
 
 //---Fight Chances---
 function getChance(){
-    if(playerHealth > 0){
+    if(getPlayerHP() > 0){
         return Math.floor(Math.random() * 10) + 1;
     } 
 }
@@ -86,14 +105,10 @@ function getChance(){
 //---Do something Function---
 doSomething()
 function doSomething() {
-    let doAnything = rl.keyIn('What would you like to do? (W)alk, (R)un, (I)nventory\n');
+    let doAnything = rl.keyIn('What would you like to do? (W)alk, (I)nventory\n');
     if(doAnything == 'w'){
         walk();
-    } else if(doAnything === 'r'){
-        run();
-    } else if(doAnything === 'f'){
-        letsFight();
-    } else if(doAnything === 'i'){
+    }  else if(doAnything === 'i'){
         inventory();
     }
 }
@@ -112,8 +127,7 @@ function walk(){
         if(fightChance < 5){
             walk();
         } else{
-            let enemyToFight = getEnemy() 
-            console.log(`${enemyToFight} has sprung out and is eager to fight you`)
+            console.log(`Something or Someone has sprung out and is eager to fight you`)
             let myAction = doSomethingIfAmbushed()
             if(myAction === 'r'){
                 letsRun();
@@ -133,8 +147,7 @@ function letsRun(){
         if(escapeChance < 5){
             letsFight();
         } else {
-            let enemy = getEnemy()
-            console.log(`You escaped ${enemy}`)
+            console.log(`You escaped to live to fight another day....or are you going to fight another day?`)
             running = false;
             walk();
             break;
@@ -149,17 +162,18 @@ function reduceHp(health, damage){
     return newHealth;
 };
 
-function getEnemy(){
-    let enemyChosen = chosenEnemy
-    return enemyChosen;
-};
-
 function letsFight() {
     let playerWins = false
-    let enemyToFight = getEnemy()          
+    let randomEnemyIndex = Math.floor(Math.random() * enemyList.length)
+    let randomEnemyMoveKeys = Object.keys(enemyList[randomEnemyIndex].EnemyMoves)
+    let randomEnemyMoves = enemyList[randomEnemyIndex].EnemyMoves
+    let randomEnemyLoot = enemyList[randomEnemyIndex].Loot
+    let chosenEnemy = enemyList[randomEnemyIndex].EnemyName
+    let enemyHealth = enemyList[randomEnemyIndex].EnemyHealth
+    let enemyToFight = chosenEnemy        
     console.log(`A ${enemyToFight} is attacking you!`)
     let enemyCurrentHealth = enemyHealth       
-    let playerCurrentHealth = playerHealth     
+    let playerCurrentHealth = getPlayerHP()   
     while(playerCurrentHealth > 0 && enemyCurrentHealth > 0){      
         const playerSkillToUse = playerMoveKeys[Math.floor(Math.random() * playerMoveKeys.length)]
         const enemySkillToUse = randomEnemyMoveKeys[Math.floor(Math.random() * randomEnemyMoveKeys.length)]
@@ -174,6 +188,8 @@ function letsFight() {
             console.log(`${userName} has killed ${enemyToFight}`);
             playerInventory.push(randomEnemyLoot)
             console.log(`${userName} picked up ${randomEnemyLoot}`)
+            console.log(`You have ${playerCurrentHealth} Health Points Left`)
+            doSomething()
             break;
         }
         playerCurrentHealth = reduceHp(playerCurrentHealth, enemySkillDamage);
@@ -184,7 +200,5 @@ function letsFight() {
             break;
         }
     }
-    console.log(`You have ${playerCurrentHealth} Health Points Left`)
-    doSomething()
-    return [playerWins, playerCurrentHealth]
+    return playerCurrentHealth;
 };

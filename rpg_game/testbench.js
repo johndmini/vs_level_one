@@ -21,7 +21,14 @@ const playerMoves = {
 }
 
 let playerHealth = 100;
-let playerInventory = [];
+// let playerInventory = playerStats.Inventory
+let playerStats = {
+    PlayerName: userName,
+    PlayerHealth: 100,
+    Inventory: []
+}
+
+console.log(playerStats.Inventory)
 const playerMoveKeys = Object.keys(playerMoves);
 
 
@@ -65,51 +72,51 @@ const enemySkillToUse = randomEnemyMoveKeys[Math.floor(Math.random() * randomEne
 const playerSkillDamage = playerMoves[playerSkillToUse];
 const enemySkillDamage = randomEnemyMoves[enemySkillToUse];
 
-function doSomething() {
-    let doAnything = rl.keyIn('What would you like to do? (W)alk, (R)un, (I)nventory\n');
-    if(doAnything == 'w'){
-        walk();
-    } else if(doAnything === 'r'){
-        run();
-    } else if(doAnything === 'f'){
-        letsFight();
-    } else if(doAnything === 'i'){
-        inventory();
-    }
-}
+// function doSomething() {
+//     let doAnything = rl.keyIn('What would you like to do? (W)alk, (R)un, (I)nventory\n');
+//     if(doAnything == 'w'){
+//         walk();
+//     } else if(doAnything === 'r'){
+//         run();
+//     } else if(doAnything === 'f'){
+//         letsFight();
+//     } else if(doAnything === 'i'){
+//         inventory();
+//     }
+// }
 
-function doSomethingIfAmbushed(){
-    let doAnythingElse = rl.keyIn('What would you like to do? (R)un, (F)ight')
-    return doAnythingElse;
-}
+// function doSomethingIfAmbushed(){
+//     let doAnythingElse = rl.keyIn('What would you like to do? (R)un, (F)ight')
+//     return doAnythingElse;
+// }
 
-function getChance(){
-    if(playerHealth > 0){
-        return Math.floor(Math.random() * 10) + 1;
-    } 
-}
+// function getChance(){
+//     if(playerHealth > 0){
+//         return Math.floor(Math.random() * 10) + 1;
+//     } 
+// }
 
-function walk(){
-    let walking = true;
-    console.log('You are now walking!')
-    while(walking === true){
-        let fightChance = getChance();
-        if(fightChance < 5){
-            walk();
-        } else{
-            let enemyToFight = getEnemy() 
-            console.log(`${enemyToFight} has sprung out and is eager to fight you`)
-            let myAction = doSomethingIfAmbushed()
-            if(myAction === 'r'){
-                letsRun();
-            } else if(myAction === 'f'){
-                letsFight();
-            }
-            break;
-        }
-    }
+// function walk(){
+//     let walking = true;
+//     console.log('You are now walking!')
+//     while(walking === true){
+//         let fightChance = getChance();
+//         if(fightChance < 5){
+//             walk();
+//         } else{
+//             let enemyToFight = getEnemy() 
+//             console.log(`${enemyToFight} has sprung out and is eager to fight you`)
+//             let myAction = doSomethingIfAmbushed()
+//             if(myAction === 'r'){
+//                 letsRun();
+//             } else if(myAction === 'f'){
+//                 letsFight();
+//             }
+//             break;
+//         }
+//     }
     
-}
+// }
 
 function reduceHp(health, damage){
     let newHealth = health - damage;
@@ -132,8 +139,11 @@ function letsFight() {
         if(enemyCurrentHealth <= 0){
             enemyCurrentHealth = 0;
             playerWins = true;
-            playerHealth = playerCurrentHealth;
-            console.log(`Mini has killed ${enemyToFight}`);
+            console.log(`${userName} has killed ${enemyToFight}`);
+            playerInventory.push(randomEnemyLoot)
+            console.log(`${userName} picked up ${randomEnemyLoot}`)
+            console.log(`You have ${playerCurrentHealth} Health Points Left`)
+            // doSomething()
             break;
         }
         playerCurrentHealth = reduceHp(playerCurrentHealth, enemySkillDamage);
@@ -144,12 +154,9 @@ function letsFight() {
             break;
         }
     }
-    console.log(playerWins)
-    console.log(playerCurrentHealth)
-    doSomething()
-    return [playerWins, playerCurrentHealth]//
+    // console.log(playerWins)
+    // console.log(playerCurrentHealth)
+    // doSomething()
+    return playerCurrentHealth//
 }
-// console.log(getEnemy())
-// console.log(playerSkillDamage)
-console.log(randomEnemyLoot)
-// console.log(playerSkillDamage)
+let newHealth = letsFight()

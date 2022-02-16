@@ -1,4 +1,5 @@
 let readline = require('readline-sync');
+let rl = readline.createInterface({input: process.stdin, output: process.stdout});
 console.log('Welcome to the Adventures of Mini Ninja');
 
 let playerName = readline.question('What is your name adventurer? ');
@@ -38,17 +39,8 @@ const enemyList = [
 ];
 
 //---Function Walk---
-let doSomething = readline.question(`Press (W)alk or (S)tand or (I)nventory` )
-if (doSomething === 'w') {
-    walk()
-}
-function walk(e) {
-    let walking = false;
-    if(e.key === 'w') {
-        walking = true;
-        console.log('You are now walking')
-    }
-}
+
+
 
 // while(playerHealth > 0 && banner.innerHTML === 'You are now walking') {
 //     let chanceToFight = Math.floor(Math.random * 100) + 1;
@@ -62,7 +54,7 @@ function walk(e) {
 
 // function fight(){
 
-}
+
 
 //---Function Inventory---
 

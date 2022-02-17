@@ -1,7 +1,6 @@
 const rl = require('readline-sync');
 let userName = rl.question('May I have your name?\n')
 
-
 //---Choose Enemy functionality---
 const oneStarEnemy = {
     'Ghoul Punch': Math.floor(Math.random() * 3) + 1,
@@ -61,9 +60,6 @@ const playerMoves = {
     'Ice Style Blast': Math.floor(Math.random() * 12) + 5,
 };
 const playerMoveKeys = Object.keys(playerMoves);
-// let playerNewHealth = letsFight();
-
-
 let playerStats = {
     PlayerName: userName,
     PlayerHealth: 100,
@@ -128,7 +124,13 @@ function doSomething() {
 
 function doSomethingIfAmbushed(){
     let doAnythingElse = rl.keyIn('What would you like to do? (R)un, (F)ight')
-    return doAnythingElse;
+    if(doAnythingElse === 'r'){
+        console.log('Yeeet!!!! I\'m out of here!!')
+        letsRun()
+    } else if(doAnythingElse === 'f'){
+        console.log('Come at me dawg...I mean bro...I mean whatever!!')
+        letsFight()
+    }
 }
 
 //---Walk/Run Function----
@@ -198,6 +200,7 @@ function letsFight() {
             console.log(`${userName} has killed ${enemyToFight}`);
             console.log(`${userName} picked up ${randomEnemyLoot}`)
             console.log(`You have ${playerCurrentHealth} Health Points Left`)
+            //---Update Player Health and Player Inventory---
             playerStats.PlayerHealth = playerCurrentHealth;
             playerStats.Inventory = playerStats.Inventory.concat(randomEnemyLoot);
             if(playerWins === true){
@@ -212,6 +215,7 @@ function letsFight() {
             playerCurrentHealth = 0;
             console.log(`${enemyToFight} has killed ${userName}`)
             console.log(`${userName} just got molly whopped and is now dead!!!`)
+            //---Update Player Health and Player Inventory---
             playerStats.PlayerHealth = playerCurrentHealth;
             let instanceChange = rl.keyIn('Would you like to play again? (Y)es or (Q)uit')
             if(instanceChange === 'y'){

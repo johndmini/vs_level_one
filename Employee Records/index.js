@@ -21,4 +21,4 @@ employeeTwo.printEmployeeForm()
 employeeThree.printEmployeeForm()
 
 employee.push(employeeOne, employeeTwo, employeeThree);
-console.log(employee)
+console.log(employee[0])

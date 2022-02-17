@@ -21,14 +21,14 @@ const playerMoves = {
 }
 
 let playerHealth = 100;
-// let playerInventory = playerStats.Inventory
+let playerInventory = playerStats.Inventory
 let playerStats = {
     PlayerName: userName,
     PlayerHealth: 100,
     Inventory: []
 }
 
-console.log(playerStats.Inventory)
+// console.log(playerStats.Inventory)
 const playerMoveKeys = Object.keys(playerMoves);
 
 
@@ -139,9 +139,9 @@ function letsFight() {
         if(enemyCurrentHealth <= 0){
             enemyCurrentHealth = 0;
             playerWins = true;
-            console.log(`${userName} has killed ${enemyToFight}`);
-            playerInventory.push(randomEnemyLoot)
-            console.log(`${userName} picked up ${randomEnemyLoot}`)
+            console.log(`Player has killed ${enemyToFight}`);
+            // playerInventory.push(randomEnemyLoot)
+            console.log(`Player picked up ${randomEnemyLoot}`)
             console.log(`You have ${playerCurrentHealth} Health Points Left`)
             // doSomething()
             break;
@@ -160,3 +160,4 @@ function letsFight() {
     return playerCurrentHealth//
 }
 let newHealth = letsFight()
+console.log(newHealth === playerStats.PlayerHealth)

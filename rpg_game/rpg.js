@@ -220,8 +220,8 @@ function letsFight() {
             let instanceChange = rl.keyIn('Would you like to play again? (Y)es or (Q)uit')
             if(instanceChange === 'y'){
                 console.log(`Welcome back to the suck ${userName}, one death isn't enough for you is it?`)
-                doSomething();
                 playerStats.PlayerHealth = 100;
+                doSomething();
             } else if (instanceChange === 'q'){
                 playerStats.PlayerHealth = 0
                 console.log(`Until next time ${userName}!!`)

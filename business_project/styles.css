@@ -8,20 +8,263 @@ body {
     color: teal
 }
 
+#intro{
+    text-align: center;
+}
+
+span {
+    color: teal !important;
+    font-weight: bold;
+}
+
+#navigation {
+    text-align: center;  
+}
+
+.sticky {
+    position: sticky;
+    top: 0px;
+}
+
+li {
+    display: inline-block;
+    background-color: grey;
+    padding: 10px;
+    border: teal solid 4px;
+    border-radius: 15%;
+    margin: 5px;
+    cursor: pointer;
+}
+
+li:hover, li:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+}
+
+.images {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.descriptions {
+    color: black;
+    font-size: 15px;
+    max-width: 375px;
+    text-align: center;
+    padding: 5px;
+}
+
 #naturewalk {
-    text-align: flex-start;
     font-size: 30px;
-    color: #9ea355
+    color: #9ea355;
+}
+
+#naturewalk-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    border: 2px solid green;
+}
+
+#village {
+    max-width: 400px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#villagedescription {
+    color: black;
+    font-size: 15px;
+    max-width: 375px;
+    text-align: center;
+    padding: 5px;
+}
+
+#hovel {
+    max-width: 250px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+#hoveldescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
+    padding: 5px;
+}
+
+#treesun {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#treesundescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
+}
+
+#treelake {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#treelakedescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
 }
 
 #aroundworld {
-    text-align: flex-start;
     font-size: 30px;
     color: Teal;
 }
 
+#aroundworld-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    border: 2px solid green;
+}
+
+#streets {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#streetsdescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
+}
+
+#eifeltower {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#eifeltowerdescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
+}
+
+#castle {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#castledescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
+}
+
+#louvre {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#louvredescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
+}
+
 #poses {
-    text-align: flex-start;
     font-size: 30px;
     color: rgb(86, 65, 206);
+}
+
+#poses-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    border: 2px solid green;
+}
+
+#faceleaf {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#faceleafdescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
+}
+
+#table {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#tabledescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
+}
+
+#blacknwhiteleft {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#blacknwhiteleftdescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
+}
+
+#blacknwhiteright {
+    max-width: 280px;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#blacknwhiterightdescription {
+    color: black;
+    font-size: 15px;
+    max-width: 300px;
+    text-align: center;
+}
+
+#furbabies {
+    font-size: 30px;
+    color: darkblue;
+}
+
+#furbabies-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    border: 2px solid green;
 }
